@@ -183,12 +183,25 @@ Roomba690Accessory.prototype = {
 
         var myRobotViaLocal = new dorita980.Local(this.blid, this.password, this.hostname);
 
+        var timed_out = false;
+        var connection_closed = false;
+        
+        setTimeout(function() {
+            if (!connection_closed) {
+                log("Connection to Roomba timed-out");
+                timed_out = true;
+                myRobotViaLocal.end();
+                callback(Error("Connection to Roomba timed-out"));
+            }
+        }, 5000);
+
         myRobotViaLocal.on('connect', function() {
 
             log("Connected to Roomba");
 
             myRobotViaLocal.getRobotState(['cleanMissionStatus']).then((function(state) {
 
+                connection_closed = true;
                 myRobotViaLocal.end();
 
                 log ("Status is [%s]", state.cleanMissionStatus.phase);
@@ -196,21 +209,22 @@ Roomba690Accessory.prototype = {
                 switch (state.cleanMissionStatus.phase) {
                     case "run":
                         log("Roomba is running");
-                        callback(null, 1);
+                        if (!timed_out) callback(null, 1);
                         break;
                     default:
                         log("Roomba is not running");
-                        callback(null, 0);
+                        if (!timed_out) callback(null, 0);
                         break;
                 }                
 
             })).catch(function(err) {
 
+                connection_closed = true;
                 myRobotViaLocal.end();
 
                 log("Unable to determine power state of Roomba");
                 log(err);
-                callback(err);
+                if (!timed_out) callback(err);
 
             });
 
