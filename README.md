@@ -7,4 +7,4 @@ This [Homebridge](https://homebridge.io/) plugin is a fork of [**homebridge-room
 
 This plugin implements a timeout limit of 5 seconds. If it cannot get the response in 5 seconds, it will throw an error and avoid blocking other accessories.
 
-The configuration of this plugin would be the exactly the same as **homebridge-roomba690**. To use this plugin, you need to uninstall **homebridge-roomba690** first.
+The plugin can be simply installed via `npm install -g homebridge-irobot-roomba690`. To use this plugin, you also need to uninstall **homebridge-roomba690** first. The configuration of this plugin would be the exactly the same as **homebridge-roomba690**.
