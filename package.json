@@ -1,6 +1,6 @@
 {
   "name": "homebridge-irobot-roomba690",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "iRobot Roomba690 for Homebridge",
   "keywords": [
     "homebridge-plugin"
