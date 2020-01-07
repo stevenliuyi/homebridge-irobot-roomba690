@@ -1,7 +1,7 @@
 {
-  "name": "homebridge-roomba690-v2",
-  "version": "0.1.0",
-  "description": "Roomba690 for Homebridge",
+  "name": "homebridge-irobot-roomba690",
+  "version": "0.1.1",
+  "description": "iRobot Roomba690 for Homebridge",
   "keywords": [
     "homebridge-plugin"
   ],
@@ -14,7 +14,7 @@
   },
    "repository": {
     "type": "git",
-    "url": "git://github.com/stevenliuyi/homebridge-roomba690-v2.git"
+    "url": "git://github.com/stevenliuyi/homebridge-irobot-roomba690.git"
   }, 
   "dependencies": {
     "dorita980": "3.0.6"
